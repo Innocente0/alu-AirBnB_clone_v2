@@ -1,15 +1,20 @@
-#!/usr/bin/python3
-""" State Module for HBNB project """
-import os
-
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
-from sqlalchemy.orm import relationship
+#!/usr/bin/env python3
+"""
+- Provides the Amenity class,represents an amenity for accommodations.
+"""
+from models.base_model import BaseModel
 
 
-class Amenity(BaseModel, Base):
-    """Amenities of a place"""
-    __tablename__ = 'amenities'
-    name = Column(String(128), nullable=False)
-    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-        place_amenities = relationship('Place', secondary="place_amenity")
+class Amenity(BaseModel):
+    """
+    - Represents an amenity for accommodations.
+    """
+
+    def __init__(self, *args, **kwargs):
+
+        """
+        Initializes a new instance of the Amenity class.
+        """
+
+        super().__init__(*args, **kwargs)
+        self.name = ""
